@@ -48,10 +48,12 @@ class Logo extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "Calculator",
+                "calculator",
                 style: GoogleFonts.titilliumWeb(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
+                  color: black,
+                  letterSpacing: 8,
                 ),
               ),
             ],

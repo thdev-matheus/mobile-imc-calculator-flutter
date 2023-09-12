@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Color primary = Colors.purple[900]!;
 Color secondary = Colors.amber[900]!;
 Color tertiary = Colors.green[900]!;
-Color black = Colors.black87;
-Color white = Colors.white;
+const Color black = Colors.black87;
+const Color white = Colors.white;
+
+TextStyle primaryTextStyle(
+        {Color color = black,
+        double size = 12,
+        FontWeight weight = FontWeight.normal}) =>
+    GoogleFonts.inter(
+      color: color,
+      fontSize: size,
+      fontWeight: weight,
+    );
 
 ButtonStyle primaryButtonStyle = ButtonStyle(
   backgroundColor: MaterialStatePropertyAll(primary),
-  foregroundColor: MaterialStatePropertyAll(white),
+  foregroundColor: const MaterialStatePropertyAll(white),
   padding: const MaterialStatePropertyAll(
     EdgeInsets.symmetric(
       horizontal: 16,
@@ -24,7 +35,7 @@ ButtonStyle primaryButtonStyle = ButtonStyle(
 
 ButtonStyle secondaryButtonStyle = ButtonStyle(
   backgroundColor: MaterialStatePropertyAll(secondary),
-  foregroundColor: MaterialStatePropertyAll(white),
+  foregroundColor: const MaterialStatePropertyAll(white),
   padding: const MaterialStatePropertyAll(
     EdgeInsets.symmetric(
       horizontal: 16,

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import "package:imc_calculator/components/_index.dart";
+import 'package:imc_calculator/styles/global_styles.dart';
+import 'package:imc_calculator/utils/navigator.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,16 +10,30 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: const SafeArea(
+        body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Bem-vindo(a) ao"),
-                  Logo(),
-                  Text("Sua calculadora de IMC"),
+                  Text(
+                    "Bem-vindo(a) ao",
+                    style: primaryTextStyle(
+                      size: 20,
+                      weight: FontWeight.bold,
+                      color: primary,
+                    ),
+                  ),
+                  const Logo(),
+                  Text(
+                    "Sua calculadora de IMC",
+                    style: primaryTextStyle(
+                      size: 20,
+                      weight: FontWeight.bold,
+                      color: tertiary,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -30,7 +47,7 @@ class HomePage extends StatelessWidget {
               secondary: true,
               text: "Ir Para Calculadora",
               action: () {
-                debugPrint("foi");
+                navigator(context: context, path: "/dashboard");
               },
             ),
           ],
