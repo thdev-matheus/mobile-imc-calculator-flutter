@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
               secondary: true,
               text: "Ir Para Calculadora",
               action: () {
-                navigator(context: context, path: "/dashboard");
+                navigator(context: context, path: "/profile");
               },
             ),
           ],
