@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import "package:imc_calculator/components/_index.dart";
 import 'package:imc_calculator/styles/global_styles.dart';
 import 'package:imc_calculator/utils/navigator.dart';
