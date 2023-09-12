@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 Color primary = Colors.purple[900]!;
 Color secondary = Colors.amber[900]!;
+Color tertiary = Colors.green[900]!;
 Color black = Colors.black87;
 Color white = Colors.white;
 

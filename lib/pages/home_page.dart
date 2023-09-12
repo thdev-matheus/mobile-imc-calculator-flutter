@@ -15,8 +15,7 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Bem-vindo(a) ao"),
-                  Text("IMC"),
-                  Text("Calculator"),
+                  Logo(),
                   Text("Sua calculadora de IMC"),
                 ],
               ),
