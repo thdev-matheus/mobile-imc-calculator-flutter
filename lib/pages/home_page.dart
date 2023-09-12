@@ -26,6 +26,7 @@ class HomePage extends StatelessWidget {
         floatingActionButton: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            separator(width: 32),
             TXTButton(
               secondary: true,
               text: "Ir Para Calculadora",
