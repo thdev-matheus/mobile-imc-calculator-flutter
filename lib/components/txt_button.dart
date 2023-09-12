@@ -1,0 +1,24 @@
+import 'package:flutter/material.dart';
+import 'package:imc_calculator/styles/global_styles.dart';
+
+class TXTButton extends StatelessWidget {
+  const TXTButton({
+    super.key,
+    this.secondary = false,
+    required this.text,
+    required this.action,
+  });
+
+  final bool secondary;
+  final String text;
+  final void Function() action;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      style: secondary ? secondaryButtonStyle : primaryButtonStyle,
+      onPressed: action,
+      child: Text(text),
+    );
+  }
+}
