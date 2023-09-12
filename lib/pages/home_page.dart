@@ -6,22 +6,25 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Column(
-          children: [
-            Text("Bem-vindo(a) ao"),
-            Text("IMC"),
-            Text("Calculator"),
-            Text("Sua calculadora de IMC"),
-          ],
+      body: const SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Bem-vindo(a) ao"),
+                Text("IMC"),
+                Text("Calculator"),
+                Text("Sua calculadora de IMC"),
+              ],
+            ),
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: TextButton(
         onPressed: () {},
-        child: TextButton(
-          onPressed: () {},
-          child: const Text("Calcular"),
-        ),
+        child: const Text("Calcular"),
       ),
     );
   }
