@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
             separator(width: 32),
             TXTButton(
               secondary: true,
-              text: "Ir Para Calculadora",
+              text: "Começar",
               action: () {
                 navigator(context: context, path: "/profile");
               },

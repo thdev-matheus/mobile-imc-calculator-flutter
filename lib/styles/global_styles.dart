@@ -6,10 +6,21 @@ Color secondary = Colors.amber[900]!;
 Color tertiary = Colors.green[900]!;
 const Color black = Colors.black87;
 const Color white = Colors.white;
+const Color error = Colors.red;
 
 TextStyle primaryTextStyle(
         {Color color = black,
-        double size = 12,
+        double size = 20,
+        FontWeight weight = FontWeight.normal}) =>
+    GoogleFonts.inter(
+      color: color,
+      fontSize: size,
+      fontWeight: weight,
+    );
+
+TextStyle errorTextStyle(
+        {Color color = error,
+        double size = 20,
         FontWeight weight = FontWeight.normal}) =>
     GoogleFonts.inter(
       color: color,
