@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
                     style: primaryTextStyle(
                       size: 20,
                       weight: FontWeight.bold,
-                      color: tertiary,
+                      color: primary,
                     ),
                   ),
                 ],
@@ -39,15 +39,19 @@ class HomePage extends StatelessWidget {
           ),
         ),
         floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             separator(width: 32),
-            TXTButton(
-              secondary: true,
-              text: "Começar",
-              action: () {
-                navigator(context: context, path: "/profile");
-              },
+            Expanded(
+              child: SizedBox(
+                height: 48,
+                child: TXTButton(
+                  text: "Começar",
+                  textSize: 18,
+                  action: () {
+                    navigator(context: context, path: "/profile");
+                  },
+                ),
+              ),
             ),
           ],
         ));

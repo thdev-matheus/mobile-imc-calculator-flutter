@@ -3,14 +3,9 @@ import 'package:imc_calculator/blocks/_blocks.dart';
 import 'package:imc_calculator/components/_components.dart';
 import 'package:imc_calculator/styles/global_styles.dart';
 
-class ProfilePage extends StatefulWidget {
+class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
-  @override
-  State<ProfilePage> createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,15 +22,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   Text(
                     "Perfil",
                     style: primaryTextStyle(
-                      size: 36,
-                      weight: FontWeight.bold,
-                    ),
+                        size: 36, weight: FontWeight.bold, color: primary),
                   ),
                   Text(
                     "Para começarmos, digite o seu nome:",
                     style: primaryTextStyle(
-                      size: 16,
-                    ),
+                        size: 16, weight: FontWeight.bold, color: primary),
                   )
                 ],
               ),
