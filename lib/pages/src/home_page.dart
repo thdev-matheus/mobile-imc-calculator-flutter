@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import "package:imc_calculator/components/_index.dart";
+import 'package:imc_calculator/components/_components.dart';
 import 'package:imc_calculator/styles/global_styles.dart';
-import 'package:imc_calculator/utils/navigator.dart';
+import 'package:imc_calculator/utils/_utils.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
