@@ -5,7 +5,7 @@ class Imc {
   final String _id = UniqueKey().toString();
   final String _day =
       "${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}";
-  final String _hour = "${DateTime.now().hour}:${DateTime.now().minute}";
+  final String _hour = "${DateTime.now().hour}h${DateTime.now().minute}";
 
   late double _weight;
   late double _height;
