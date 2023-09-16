@@ -48,7 +48,11 @@ class HomePage extends StatelessWidget {
                   text: "Começar",
                   textSize: 18,
                   action: () {
-                    navigator(context: context, path: "/profile");
+                    navigator(
+                      context: context,
+                      path: "/profile",
+                      remove: true,
+                    );
                   },
                 ),
               ),

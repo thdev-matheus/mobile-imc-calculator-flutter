@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:imc_calculator/styles/global_styles.dart';
 
-class Input extends StatefulWidget {
-  const Input({
+class TextInput extends StatefulWidget {
+  const TextInput({
     super.key,
     this.isRequired = false,
     this.isPassword = false,
@@ -35,10 +35,10 @@ class Input extends StatefulWidget {
   final TextInputType? keyType;
 
   @override
-  State<Input> createState() => _InputState();
+  State<TextInput> createState() => _TextInputState();
 }
 
-class _InputState extends State<Input> {
+class _TextInputState extends State<TextInput> {
   bool _isVisible = false;
 
   void changeVisibility() {
