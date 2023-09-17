@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imc_calculator/styles/global_styles.dart';
 import 'package:imc_calculator/components/_components.dart';
+import 'package:imc_calculator/models/_models.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -11,6 +12,8 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   Map<dynamic, dynamic>? args;
+
+  Imc mockImc = Imc(weight: 70.5, height: 1.69);
 
   @override
   void didChangeDependencies() {
@@ -46,107 +49,7 @@ class _DashboardPageState extends State<DashboardPage> {
               ],
             ),
             separator(height: 16),
-            Card(
-              elevation: 5,
-              child: SizedBox(
-                height: 100,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "Peso: ",
-                                style: primaryTextStyle(
-                                  size: 18,
-                                  weight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "71.2Kg",
-                                style: primaryTextStyle(
-                                  size: 18,
-                                  weight: FontWeight.bold,
-                                  color: primary,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "Altura: ",
-                                style: primaryTextStyle(
-                                  size: 18,
-                                  weight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                "1.69m",
-                                style: primaryTextStyle(
-                                  size: 18,
-                                  weight: FontWeight.bold,
-                                  color: primary,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "IMC",
-                            style: primaryTextStyle(
-                              size: 18,
-                              weight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "25.8",
-                            style: primaryTextStyle(
-                              size: 40,
-                              weight: FontWeight.bold,
-                              color: secondary,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            "16/09/2023",
-                            style: primaryTextStyle(
-                              size: 14,
-                              weight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            "14h10",
-                            style: primaryTextStyle(
-                              size: 16,
-                              weight: FontWeight.bold,
-                              color: secondary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            )
+            ImcCard(imc: mockImc)
           ],
         ),
       ),

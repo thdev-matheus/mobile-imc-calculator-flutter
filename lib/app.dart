@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:imc_calculator/routes.dart';
 
 class ImcCalculatorApp extends StatelessWidget {
@@ -12,6 +13,15 @@ class ImcCalculatorApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         routes: routes,
         initialRoute: "/",
+        locale: const Locale('pt', 'BR'),
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('pt', 'BR'),
+        ],
         title: "IMC Calculator",
       ),
     );
