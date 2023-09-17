@@ -11,15 +11,51 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  Map<dynamic, dynamic>? args;
-
-  Imc mockImc = Imc(weight: 70.5, height: 1.69);
+  Person? person;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    args = ModalRoute.of(context)!.settings.arguments as Map<dynamic, dynamic>;
+    Map<dynamic, dynamic> args =
+        ModalRoute.of(context)!.settings.arguments as Map<dynamic, dynamic>;
+
+    person = Person(name: args['name']);
+  }
+
+  List<Widget> imcResults() {
+    Map<String, dynamic>? data = person?.getData();
+
+    List<dynamic> cards =
+        data?['results'].map((imc) => ImcCard(imc: imc)).toList();
+    if (cards.isEmpty) {
+      return [
+        Column(
+          children: [
+            separator(height: 15),
+            Text(
+              'Você não possui nenhum cálculo em seu histórico',
+              textAlign: TextAlign.center,
+              style: primaryTextStyle(
+                size: 24,
+                color: secondary,
+                weight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              'Adicione um novo cálculo',
+              textAlign: TextAlign.center,
+              style: primaryTextStyle(
+                size: 24,
+                color: primary,
+              ),
+            ),
+          ],
+        )
+      ];
+    } else {
+      return cards as List<Widget>;
+    }
   }
 
   @override
@@ -40,7 +76,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   ),
                 ),
                 Text(
-                  args?['name'],
+                  person?.getData()['name'],
                   style: primaryTextStyle(
                     size: 30,
                     weight: FontWeight.bold,
@@ -49,7 +85,7 @@ class _DashboardPageState extends State<DashboardPage> {
               ],
             ),
             separator(height: 16),
-            ImcCard(imc: mockImc)
+            ...imcResults()
           ],
         ),
       ),
