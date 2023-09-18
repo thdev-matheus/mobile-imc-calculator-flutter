@@ -3,12 +3,10 @@ import 'package:imc_calculator/models/_models.dart';
 import 'package:imc_calculator/styles/global_styles.dart';
 
 class ImcCard extends StatelessWidget {
-  const ImcCard({
-    super.key,
-    required this.imc,
-  });
+  const ImcCard({super.key, required this.imc, required this.deleteImc});
 
   final Imc imc;
+  final void Function({required String id}) deleteImc;
 
   Color getColor(Map<String, dynamic> imcData) {
     double imcValue = imcData['imc'];
@@ -36,115 +34,118 @@ class ImcCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Map<String, dynamic> imcData = imc.getData();
 
-    return Card(
-      clipBehavior: Clip.hardEdge,
-      elevation: 5,
-      child: SizedBox(
-        height: 100,
-        child: Row(
-          children: [
-            Container(
-              width: 10,
-              color: getColor(imcData),
-            ),
-            Expanded(
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Peso: ',
-                              style: primaryTextStyle(
-                                size: 18,
-                                weight: FontWeight.bold,
+    return InkWell(
+      onLongPress: () => deleteImc(id: imcData['id']),
+      child: Card(
+        clipBehavior: Clip.hardEdge,
+        elevation: 5,
+        child: SizedBox(
+          height: 100,
+          child: Row(
+            children: [
+              Container(
+                width: 10,
+                color: getColor(imcData),
+              ),
+              Expanded(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                'Peso: ',
+                                style: primaryTextStyle(
+                                  size: 18,
+                                  weight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '${imcData['weight']}Kg',
-                              style: primaryTextStyle(
-                                size: 18,
-                                weight: FontWeight.bold,
-                                color: primary,
+                              Text(
+                                '${imcData['weight']}Kg',
+                                style: primaryTextStyle(
+                                  size: 18,
+                                  weight: FontWeight.bold,
+                                  color: primary,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              'Altura: ',
-                              style: primaryTextStyle(
-                                size: 18,
-                                weight: FontWeight.bold,
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                'Altura: ',
+                                style: primaryTextStyle(
+                                  size: 18,
+                                  weight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '${imcData['height']}m',
-                              style: primaryTextStyle(
-                                size: 18,
-                                weight: FontWeight.bold,
-                                color: primary,
+                              Text(
+                                '${imcData['height']}m',
+                                style: primaryTextStyle(
+                                  size: 18,
+                                  weight: FontWeight.bold,
+                                  color: primary,
+                                ),
                               ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "IMC",
+                            style: primaryTextStyle(
+                              size: 18,
+                              weight: FontWeight.bold,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "IMC",
-                          style: primaryTextStyle(
-                            size: 18,
-                            weight: FontWeight.bold,
                           ),
-                        ),
-                        Text(
-                          imcData['imc'].toString(),
-                          style: primaryTextStyle(
-                            size: 40,
-                            weight: FontWeight.bold,
-                            color: secondary,
+                          Text(
+                            imcData['imc'].toString(),
+                            style: primaryTextStyle(
+                              size: 40,
+                              weight: FontWeight.bold,
+                              color: secondary,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          imcData['day'].toString(),
-                          style: primaryTextStyle(
-                            size: 14,
-                            weight: FontWeight.bold,
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            imcData['day'].toString(),
+                            style: primaryTextStyle(
+                              size: 14,
+                              weight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        Text(
-                          imcData['hour'].toString(),
-                          style: primaryTextStyle(
-                            size: 16,
-                            weight: FontWeight.bold,
-                            color: secondary,
+                          Text(
+                            imcData['hour'].toString(),
+                            style: primaryTextStyle(
+                              size: 16,
+                              weight: FontWeight.bold,
+                              color: secondary,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

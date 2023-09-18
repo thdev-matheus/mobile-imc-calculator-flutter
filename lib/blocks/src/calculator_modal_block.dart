@@ -63,7 +63,7 @@ class _CalculatorModalBlockState extends State<CalculatorModalBlock> {
     return Wrap(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
             children: [
               Text(

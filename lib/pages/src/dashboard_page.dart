@@ -14,49 +14,19 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   Person? person;
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    Map<dynamic, dynamic> args =
-        ModalRoute.of(context)!.settings.arguments as Map<dynamic, dynamic>;
-
-    person = Person(name: args['name']);
-  }
-
-  List<dynamic> imcResults() {
-    Map<String, dynamic>? data = person?.getData();
-
-    List<dynamic> cards =
-        data?['results'].map((imc) => ImcCard(imc: imc)).toList();
-    if (cards.isEmpty) {
-      return [
-        Column(
-          children: [
-            separator(height: 15),
-            Text(
-              'Você não possui nenhum cálculo em seu histórico',
-              textAlign: TextAlign.center,
-              style: primaryTextStyle(
-                size: 24,
-                color: secondary,
-                weight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              'Adicione um novo cálculo',
-              textAlign: TextAlign.center,
-              style: primaryTextStyle(
-                size: 24,
-                color: primary,
-              ),
-            ),
-          ],
-        )
-      ];
-    } else {
-      return cards;
-    }
+  void deleteImc({required String id}) {
+    showDialog(
+      context: context,
+      builder: (BuildContext bc) {
+        return RemoveImcModal(
+          actionRemove: () {
+            person?.removeImc(id: id);
+            setState(() {});
+            Navigator.pop(context);
+          },
+        );
+      },
+    );
   }
 
   void calculate({
@@ -67,6 +37,16 @@ class _DashboardPageState extends State<DashboardPage> {
     person?.addImc(imc: newImc);
     setState(() {});
     Navigator.pop(context);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    Map<dynamic, dynamic> args =
+        ModalRoute.of(context)!.settings.arguments as Map<dynamic, dynamic>;
+
+    person = Person(name: args['name']);
   }
 
   @override
@@ -86,7 +66,10 @@ class _DashboardPageState extends State<DashboardPage> {
               ),
             ),
             separator(height: 16),
-            ...imcResults()
+            ...cardListBlock(
+              person: person,
+              deleteImc: deleteImc,
+            )
           ],
         ),
       ),
@@ -95,6 +78,7 @@ class _DashboardPageState extends State<DashboardPage> {
           showDialog(
             context: context,
             builder: (BuildContext bc) => Dialog(
+              elevation: 5,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
