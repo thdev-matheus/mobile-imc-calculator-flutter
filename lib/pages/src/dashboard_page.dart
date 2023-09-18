@@ -24,7 +24,7 @@ class _DashboardPageState extends State<DashboardPage> {
     person = Person(name: args['name']);
   }
 
-  List<Widget> imcResults() {
+  List<dynamic> imcResults() {
     Map<String, dynamic>? data = person?.getData();
 
     List<dynamic> cards =
@@ -55,8 +55,18 @@ class _DashboardPageState extends State<DashboardPage> {
         )
       ];
     } else {
-      return cards as List<Widget>;
+      return cards;
     }
+  }
+
+  void calculate({
+    required double weight,
+    required double height,
+  }) {
+    Imc newImc = Imc(weight: weight, height: height);
+    person?.addImc(imc: newImc);
+    setState(() {});
+    Navigator.pop(context);
   }
 
   @override
@@ -88,8 +98,8 @@ class _DashboardPageState extends State<DashboardPage> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: CalculatorModal(
-                calculate: () {},
+              child: CalculatorModalBlock(
+                calculate: calculate,
               ),
             ),
           );
