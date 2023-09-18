@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import "package:imc_calculator/components/_index.dart";
+import 'package:imc_calculator/components/_components.dart';
 import 'package:imc_calculator/styles/global_styles.dart';
-import 'package:imc_calculator/utils/navigator.dart';
+import 'package:imc_calculator/utils/_utils.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
                     style: primaryTextStyle(
                       size: 20,
                       weight: FontWeight.bold,
-                      color: tertiary,
+                      color: primary,
                     ),
                   ),
                 ],
@@ -39,15 +39,23 @@ class HomePage extends StatelessWidget {
           ),
         ),
         floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             separator(width: 32),
-            TXTButton(
-              secondary: true,
-              text: "Ir Para Calculadora",
-              action: () {
-                navigator(context: context, path: "/profile");
-              },
+            Expanded(
+              child: SizedBox(
+                height: 48,
+                child: TXTButton(
+                  text: "Começar",
+                  textSize: 18,
+                  action: () {
+                    navigator(
+                      context: context,
+                      path: "/profile",
+                      remove: true,
+                    );
+                  },
+                ),
+              ),
             ),
           ],
         ));

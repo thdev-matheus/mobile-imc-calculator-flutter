@@ -1,4 +1,4 @@
-import 'package:imc_calculator/models/imc.dart';
+import 'package:imc_calculator/models/_models.dart';
 
 class Person {
   late String _name;
